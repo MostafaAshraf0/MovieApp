@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movie App</title>
     <link rel="stylesheet" href="/css/app.css">
+    <livewire:styles>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="font-sams bg-gray-900 text-white">
     <nav class="border-b border-gray-800">
@@ -31,14 +33,7 @@
              </ul>
              <div class="flex flex-col md:flex-row items-center">
 
-                <div class="relative mt-3 md:mt-0">
-                    <input type="text" class="bg-gray-800 text-sm rounded-full w-64 px-4 pl-8 py-1 
-                    focus:outline-non focus:shadow-outline" placeholder="Search">
-                    <div class="absolute top-8">
-                         <svg class="fill-current w-10 text-gray-500 mt-5 ml-5" viewBox="0 0 24 24" ><path class="heroicon-ui" d="M19.4271164,20.4271164 C18.0372495,21.4174803 16.3366522,22 14.5,22 C9.80557939,22 6,18.1944206 6,13.5 C6,8.80557939 9.80557939,5 14.5,5 C19.1944206,5 23,8.80557939 23,13.5 C23,15.8472103 22.0486052,17.9722103 20.5104077,19.5104077 L26.5077736,25.5077736 C26.782828,25.782828 26.7761424,26.2238576 26.5,26.5 C26.2219324,26.7780676 25.7796227,26.7796227 25.5077736,26.5077736 L19.4271164,20.4271164 L19.4271164,20.4271164 Z M14.5,21 C18.6421358,21 22,17.6421358 22,13.5 C22,9.35786417 18.6421358,6 14.5,6 C10.3578642,6 7,9.35786417 7,13.5 C7,17.6421358 10.3578642,21 14.5,21 L14.5,21 Z" /></svg>
-                    
-                    </div>
-                </div>
+               <livewire:search-dropdown>
                 <div class="md:ml-4 mt-3 md:mt-0">
                     <a href="">
                         <img src="/svg/ava.svg" alt="avatar" class="rounded-full w-8 h-8">
@@ -49,5 +44,6 @@
 
     </nav>
     @yield('content')
+    <livewire:scripts>
 </body>
 </html>

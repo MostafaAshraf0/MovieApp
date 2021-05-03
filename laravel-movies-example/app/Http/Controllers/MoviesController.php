@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use App\ViewModels\MoviesViewModel;
+use App\ViewModels\MovieViewModel;
 
 class MoviesController extends Controller
 {
@@ -24,22 +25,28 @@ class MoviesController extends Controller
         ->get('https://api.themoviedb.org/3/movie/now_playing?api_key=72b6d4013c0948c5b0d3c6480a1ee5f8&language=en-US&page=1')
         ->json()['results'];
 
-        $genresArray = Http::withToken(config('services.tmdb.token'))
+        $genres = Http::withToken(config('services.tmdb.token'))
         ->get('https://api.themoviedb.org/3/genre/movie/list?api_key=72b6d4013c0948c5b0d3c6480a1ee5f8&language=en-US&page=1')
         ->json()['genres'];
         
-        $genres = collect($genresArray)->mapWithKeys(function ($genre){
-            return [$genre['id'] => $genre['name']];
-        });
+       // $genres = collect($genresArray)->mapWithKeys(function ($genre){
+         //   return [$genre['id'] => $genre['name']];
+       // });
        
 
         
 
-        return view('index',[
-            'popularMovies' => $popularMovies ,
-            'nowPlayingMovies' => $nowPlayingMovies,
-            'genres' => $genres ,
-        ]);
+      //  return view('index',[
+        //    'popularMovies' => $popularMovies ,
+          //  'nowPlayingMovies' => $nowPlayingMovies,
+            //'genres' => $genres ,
+        //]);
+        $ViewModel = new MoviesViewModel(
+            $popularMovies,
+            $nowPlayingMovies,
+            $genres,
+        );
+        return view('index', $ViewModel);
     }
 
     /**
@@ -75,11 +82,9 @@ class MoviesController extends Controller
         ->get('https://api.themoviedb.org/3/movie/'.$id.'?api_key=72b6d4013c0948c5b0d3c6480a1ee5f8&language=en-US&page=1&append_to_response=credits,videos,images')
         ->json();
 
-        
-
-        return view('show',[
-            'movie' => $movie ,
-        ]);
+        $ViewModel = new MovieViewModel($movie);       
+ 
+        return view('show', $ViewModel);
     }
 
     /**

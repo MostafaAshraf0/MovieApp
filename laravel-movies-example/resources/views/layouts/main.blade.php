@@ -25,10 +25,10 @@
                      <a href="<?=route('movies.index')?>" class="haver:text-gray-300 hover:opacity-75 transition ease-in-out duration-150">Movies</a>
                  </li>
                  <li class="md:ml-6 mt-3 md:mt-0">
-                    <a href="#" class="haver:text-gray-300 hover:opacity-75 transition ease-in-out duration-150">Tv Shows</a>
+                    <a href="<?=route('tv.index')?>" class="haver:text-gray-300 hover:opacity-75 transition ease-in-out duration-150">Tv Shows</a>
                 </li>
                 <li class="md:ml-6 mt-3 md:mt-0">
-                    <a href="#" class="haver:text-gray-300 hover:opacity-75 transition ease-in-out duration-150">Actors</a>
+                    <a href="<?=route('actors.index')?>" class="haver:text-gray-300 hover:opacity-75 transition ease-in-out duration-150">Actors</a>
                 </li>
              </ul>
              <div class="flex flex-col md:flex-row items-center">
@@ -45,5 +45,6 @@
     </nav>
     @yield('content')
     <livewire:scripts>
+        @yield('scripts')
 </body>
 </html>

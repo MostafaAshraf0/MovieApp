@@ -87,11 +87,11 @@
                     @foreach ($movie['cast'] as $cast)
                      
                        <div class="mt-8">
-                        <a href="#">
+                        <a href="<?=route('actors.show', $cast['id'])?>">
                             <img src="<?='https://image.tmdb.org/t/p/w300/'.$cast['profile_path']?>" alt="actorl" class="hover:opacity-75 transition ease-in-out duration-150 ">
                         </a>
                         <div class="mt-2">
-                            <a href="#" class="text-lg mt-2 " ><?=$cast['name']?></a>
+                            <a href="<?=route('actors.show', $cast['id'])?>" class="text-lg mt-2 " ><?=$cast['name']?></a>
                             <div class="flex items center text-gray-400 text-sm mt-1">
                             </div>
                             <div class="text-sm" style="color: gray">
